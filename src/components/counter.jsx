@@ -4,7 +4,7 @@ const Counter = () => {
   const [count, setCount] = useState(0)
 
   const formCount = () => {
-    return count === 0 ? 'Ноль' : count
+    return count === 0 ? 'nula' : count
   }
 
   const getBadgeClasses = () => {
