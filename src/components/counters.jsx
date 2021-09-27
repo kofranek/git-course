@@ -1,2 +1,14 @@
-import React, { useState } from 'react'
-import Counter from './counter'
+import React from 'react';
+import Counter from './counter';
+
+const Counters = () => {
+  return (
+    <div>
+      <Counter/>
+      <Counter/>
+      <Counter/>
+    </div>
+  );
+};
+
+export default Counters;
