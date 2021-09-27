@@ -19,10 +19,14 @@ const Counters = () => {
     <div>
       { counters.map(counter => (
         <Counter key={ counter.id }
+                 /*
+                 id = {counter.id}  //key is not a props
                  value={ counter.value }
                  name={ counter.name }
+                  */
+                // counter={counter}  //musíme měnit props.value na props.counter.value
+                 {...counter}
                  onDelete={handleDelete}
-                 id = {counter.id}  //key is not a props
         >
         </Counter>
       )) }

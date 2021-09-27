@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Counter = (props) => {
   console.log('props=',props)
-  const [value, setValue  ] = useState(props.value)
+  const [value, setValue  ] = useState(props.value) //props.counter.value
 
   const formValue = () => {
     return value === 0 ? 'Ноль' : value
