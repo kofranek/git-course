@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 
-const Counter = () => {
-  const [count, setCount] = useState(0)
+const Counter = (props) => {
+  console.log('props=',props)
+  const [value, setValue  ] = useState(props.value)
 
-  const formCount = () => {
-    return count === 0 ? 'Ноль' : count
+  const formValue = () => {
+    return value === 0 ? 'Ноль' : value
   }
 
   const getBadgeClasses = () => {
     let classes = 'bagde m-2 bg-'
-    classes += count === 0 ? 'danger' : 'primary'
+    classes += value === 0 ? 'danger' : 'primary'
     return classes
   }
 
@@ -25,18 +26,18 @@ const Counter = () => {
 
   const handleIncrement = product => {
     console.log('product=', product)
-    setCount(count + 1)
+    setValue(value + 1)
   }
 
   const handleDecrement = productId => {
     //console.log('increment')
-    if (count > 0) setCount(count - 1)
+    if (value > 0) setValue(value - 1)
     console.log('productId=', productId)
   }
 
   return (
     <div>
-      <span className={getBadgeClasses()}>{formCount()}</span>
+      <span className={getBadgeClasses()}>{formValue()}</span>
       <button
         onClick={() => handleIncrement({ id: 1 })}
         className='btn btn-secondary btn-sm'
@@ -44,7 +45,7 @@ const Counter = () => {
         Increment
       </button>
       <button
-        hidden={count === 0}
+        hidden={value === 0}
         onClick={() => handleDecrement({ id: 1 })}
         className='btn btn-secondary btn-sm m-2'
       >
