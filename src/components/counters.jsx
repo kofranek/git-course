@@ -10,12 +10,19 @@ const Counters = () => {
       { value: 0, id: 4, name: 'Стартовый набор минималиста' },
       { value: 0, id: 5, name: 'Ненужные вещи' },
     ])
+  const handleDelete =(counterId)=>{
+    console.log('handleDelete id=',counterId)
+    const newCounters=counters.filter((el)=>el.id!==counterId)
+    setCounters(newCounters)
+  }
   return (
     <div>
       { counters.map(counter => (
-        <Counter key={ counter.count }
+        <Counter key={ counter.id }
                  value={ counter.value }
                  name={ counter.name }
+                 onDelete={handleDelete}
+                 id = {counter.id}  //key is not a props
         >
         </Counter>
       )) }
