@@ -38,6 +38,7 @@ const Counter = (props) => {
   return (
     <div>
       <h4>{props.name}</h4>
+      <h4>{props.nameCzech}</h4>
       <span className={getBadgeClasses()}>{formValue()}</span>
       <button
         onClick={() => handleIncrement({ id: 1 })}
