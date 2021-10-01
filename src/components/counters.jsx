@@ -15,6 +15,23 @@ const Counters = () => {
     setCounters(initialState)
   }
 
+
+  const handleIncrement = (counterId) =>{
+    console.log('handleIncrement id=', counterId)
+    const newCounters=[...counters]
+    const counterIndex = newCounters.findIndex(el=>el.id===counterId)
+    newCounters[counterIndex].value++
+    setCounters(newCounters)
+  }
+
+  const handleDecrement = (counterId) =>{
+    console.log('handleDecrement id=', counterId)
+    const newCounters=[...counters]
+    const counterIndex = newCounters.findIndex(el=>el.id===counterId)
+    console.log('handleDecrement newCounters[counterIndex].value',newCounters[counterIndex].value)
+    newCounters[counterIndex].value-- //if value===0, decrement button is hidden
+    setCounters(newCounters)
+  }
   const handleDelete = (counterId) => {
     console.log('handleDelete id=', counterId)
     const newCounters = counters.filter((el) => el.id !== counterId)
@@ -32,6 +49,9 @@ const Counters = () => {
            */
                  { ...counter } //spread operator - allows you to add additional parameters
                  onDelete={ handleDelete }
+                 onIncrement={handleIncrement}
+                 onDecrement={handleDecrement}
+
         >
         </Counter>
       )) }

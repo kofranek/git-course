@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+//import React, { useState } from 'react'
 
 const Counter = (props) => {
   console.log('props=',props)
-  const [value, setValue  ] = useState(props.value) //props.counter.value
+ // const [value, setValue  ] = useState(props.value) //props.counter.value
 
   const formValue = () => {
-    return value === 0 ? 'Ноль' : value
+    return props.value === 0 ? 'Ноль' : props.value
   }
 
   const getBadgeClasses = () => {
     let classes = 'bagde m-2 bg-'
-    classes += value === 0 ? 'danger' : 'primary'
+    classes += props.value === 0 ? 'danger' : 'primary'
     return classes
   }
 
@@ -24,16 +24,16 @@ const Counter = (props) => {
     }
   }
 
-  const handleIncrement = product => {
-    console.log('product=', product)
-    setValue(value + 1)
-  }
-
-  const handleDecrement = productId => {
-    //console.log('increment')
-    if (value > 0) setValue(value - 1)
-    console.log('productId=', productId)
-  }
+  // const handleIncrement = product => {
+  //   console.log('product=', product)
+  //   setValue(value + 1)
+  // }
+  //
+  // const handleDecrement = productId => {
+  //   //console.log('increment')
+  //   if (value > 0) setValue(value - 1)
+  //   console.log('productId=', productId)
+  // }
 
   return (
     <div>
@@ -41,14 +41,16 @@ const Counter = (props) => {
       <h4>{props.nameCzech}</h4>
       <span className={getBadgeClasses()}>{formValue()}</span>
       <button
-        onClick={() => handleIncrement({ id: 1 })}
+        //onClick={() => handleIncrement({ id: 1 })}
+        onClick={()=>props.onIncrement(props.id)}
         className='btn btn-secondary btn-sm'
       >
         Increment
       </button>
       <button
-        hidden={value === 0}
-        onClick={() => handleDecrement({ id: 1 })}
+        hidden={props.value === 0}
+        //onClick={() => handleDecrement({ id: 1 })}
+        onClick={() => props.onDecrement(props.id)}
         className='btn btn-secondary btn-sm m-2'
       >
         Decrement
