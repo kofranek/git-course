@@ -15,7 +15,6 @@ const Counters = () => {
     setCounters(initialState)
   }
 
-
   const handleIncrement = (counterId) =>{
     console.log('handleIncrement id=', counterId)
     const newCounters=[...counters]
@@ -23,7 +22,6 @@ const Counters = () => {
     newCounters[counterIndex].value++
     setCounters(newCounters)
   }
-
   const handleDecrement = (counterId) =>{
     console.log('handleDecrement id=', counterId)
     const newCounters=[...counters]
@@ -42,16 +40,10 @@ const Counters = () => {
       <button onClick={ handleReset } className="btn btn-primary btn-sm m-2">Reset</button>
       { counters.map(counter => (
         <Counter key={ counter.id }
-          /*
-          id = {counter.id}  //key is not a props
-          value={ counter.value }
-          name={ counter.name }
-           */
                  { ...counter } //spread operator - allows you to add additional parameters
                  onDelete={ handleDelete }
                  onIncrement={handleIncrement}
                  onDecrement={handleDecrement}
-
         >
         </Counter>
       )) }
