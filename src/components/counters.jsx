@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Counter from './counter';
 
-const Counters = ({onReset, counters, onDelete, onIncrement, onDecrement}) => {
+const Counters = ({ onReset, counters, ...rest }) => {
 
   return (
     <div>
@@ -9,9 +9,7 @@ const Counters = ({onReset, counters, onDelete, onIncrement, onDecrement}) => {
       { counters.map(el => (
         <Counter key={ el.id }
                  { ...el } //spread operator - allows you to add additional parameters
-                 onDelete={ onDelete }
-                 onIncrement={onIncrement}
-                 onDecrement={onDecrement}
+                 { ...rest } //spread operator - instead of onIncrement, onDecrement, onDelete
         >
         </Counter>
       )) }
